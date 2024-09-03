@@ -1,0 +1,19 @@
+.layout {
+  @apply mx-auto grid h-dvh max-w-[600px] grid-rows-[1fr_auto] bg-[#171617];
+}
+
+.nav {
+  @apply border-t-2 border-t-white/10 p-3;
+
+  & > ul {
+    @apply flex justify-around;
+  }
+}
+
+.link {
+  @apply flex flex-col items-center gap-1 text-sm text-[#666666] transition-colors duration-300;
+
+  &_active {
+    @apply text-blue-500;
+  }
+}

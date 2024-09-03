@@ -1,0 +1,11 @@
+.chat {
+  @apply grid h-full grid-rows-[auto_1fr_auto] overflow-hidden;
+}
+
+.user_header {
+  @apply flex items-center gap-4 border-b border-b-white/10 px-4 py-2;
+}
+
+.input {
+  @apply flex gap-3 p-3;
+}

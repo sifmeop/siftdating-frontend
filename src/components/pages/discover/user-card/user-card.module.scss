@@ -1,0 +1,38 @@
+.card {
+  @apply flex h-full flex-col;
+}
+
+.slider {
+  flex: 1;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background-color: white;
+
+  & img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

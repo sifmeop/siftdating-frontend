@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply overflow-hidden bg-[#1a181a];
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+}
+
+.no-scroll {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.container {
+  @apply mx-auto max-w-[600px];
+}
