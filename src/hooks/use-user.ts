@@ -1,3 +1,7 @@
+import { IUser, useGetUser } from '~/api/user'
+
 export const useUser = () => {
-  return {}
+  const { data } = useGetUser()
+
+  return data as IUser
 }

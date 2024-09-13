@@ -74,7 +74,20 @@ export const RegisterStart = () => {
       />
       <RadioGroup
         {...register('gender')}
-        label='GENDER'
+        label='Gender'
+        orientation='horizontal'
+        isInvalid={!!errors.gender}
+        errorMessage={errors.gender?.message}>
+        <Radio value='MALE' classNames={radioClassNames}>
+          Male
+        </Radio>
+        <Radio value='FEMALE' classNames={radioClassNames}>
+          Female
+        </Radio>
+      </RadioGroup>
+      <RadioGroup
+        {...register('genderPreference')}
+        label='Gender Preference'
         orientation='horizontal'
         isInvalid={!!errors.gender}
         errorMessage={errors.gender?.message}>

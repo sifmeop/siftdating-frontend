@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { axiosInstance } from '~/libs/axios-instance'
+import { IChat } from '~/pages/chats/use-get-chats'
 import { IMessage } from './use-get-messages'
 
 interface IBody {
@@ -17,7 +18,7 @@ export const useReadMessage = () => {
         const res = await axiosInstance.put('/messages/read', body)
         return res.data
       } catch (error) {
-        console.log('error', error)
+        console.log('Error in useReadMessage: ', error)
       }
     },
     onMutate: async ({ chatId, messagesIds }) => {
@@ -32,11 +33,13 @@ export const useReadMessage = () => {
         return { previousData }
       }
 
+      const readAt = new Date().toISOString()
+
       const updatedData = previousData.map((message) => {
         if (messagesIds.includes(message.id)) {
           return {
             ...message,
-            readAt: new Date().toISOString()
+            readAt
           }
         } else {
           return message
@@ -44,6 +47,17 @@ export const useReadMessage = () => {
       })
 
       queryClient.setQueryData(['messages', chatId], updatedData)
+
+      const chats = queryClient.getQueryData(['chats']) as IChat[] | undefined
+
+      if (chats) {
+        const chatIndex = chats.findIndex((chat) => chat.id === chatId)
+
+        if (chatIndex !== -1) {
+          chats[chatIndex].unRead -= messagesIds.length
+          queryClient.setQueryData(['chats'], chats)
+        }
+      }
 
       return { previousData }
     }

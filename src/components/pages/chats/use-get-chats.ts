@@ -6,6 +6,7 @@ export interface IChat {
   user: IUser
   lastMessage: ILastMessage | null
   createdAt: string
+  unRead: number
 }
 
 interface IUser {
@@ -23,6 +24,7 @@ interface ILastMessage {
   createdAt: string
   editedAt: string | null
   deletedAt: string | null
+  readAt: string | null
 }
 
 export const useGetChats = () => {

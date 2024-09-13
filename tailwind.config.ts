@@ -9,7 +9,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/layout/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@nextui-org/theme/dist/components/(button|date-picker|divider|input|listbox|radio|select|skeleton|spinner|ripple|calendar|date-input|popover|scroll-shadow).js'
+    './node_modules/@nextui-org/theme/dist/components/(button|checkbox|date-picker|divider|dropdown|input|listbox|modal|radio|select|skeleton|spinner|ripple|calendar|date-input|popover|menu|scroll-shadow).js'
   ],
   theme: {},
   plugins: [nextui(), scrollbar]

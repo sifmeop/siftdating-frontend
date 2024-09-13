@@ -21,6 +21,9 @@ const schema = z.object({
   city: z.string().min(1, 'City is required'),
   gender: z
     .string({ message: 'Gender is required' })
+    .min(1, 'Gender is required'),
+  genderPreference: z
+    .string({ message: 'Gender is required' })
     .min(1, 'Gender is required')
 })
 

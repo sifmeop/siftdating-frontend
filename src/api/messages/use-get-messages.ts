@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { axiosInstance } from '~/libs/axios-instance'
 
 export interface IMessage {
@@ -13,6 +14,10 @@ export interface IMessage {
 }
 
 export const useGetMessages = (chatId: string) => {
+  const router = useRouter()
+
+  const toChats = () => router.push('/chats')
+
   return useQuery({
     queryKey: ['messages', chatId],
     queryFn: async () => {
@@ -22,14 +27,9 @@ export const useGetMessages = (chatId: string) => {
         )
         return res.data
       } catch (error) {
-        const message = (error as Error).message
-        console.log('message', message)
+        console.log('Error in useGetMessages: ', error)
 
-        if (error && typeof error === 'object' && 'data' in error) {
-          console.log('error.data', error.data)
-        }
-
-        console.log('error', error)
+        toChats()
       }
     }
   })

@@ -1,18 +1,10 @@
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { IoIosArrowBack } from 'react-icons/io'
+import { memo } from 'react'
 import styles from './chat.module.scss'
 
-export const UserHeader = () => {
-  const router = useRouter()
-
-  const goBack = () => router.push('/chats')
-
+export const UserHeader = memo(() => {
   return (
     <div className={styles.user_header}>
-      <button className='mr-5' onClick={goBack}>
-        <IoIosArrowBack size={30} />
-      </button>
       <Image
         className='rounded-full'
         width={50}
@@ -28,4 +20,6 @@ export const UserHeader = () => {
       </div>
     </div>
   )
-}
+})
+
+UserHeader.displayName = 'UserHeader'

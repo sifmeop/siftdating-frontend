@@ -21,7 +21,6 @@ const fetchLikes = async () => {
 export const useLikes = () => {
   return useQuery({
     queryKey: ['likes'],
-    queryFn: fetchLikes,
-    refetchOnMount: true
+    queryFn: fetchLikes
   })
 }
