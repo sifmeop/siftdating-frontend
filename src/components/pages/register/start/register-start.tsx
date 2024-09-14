@@ -72,32 +72,46 @@ export const RegisterStart = () => {
         getCity={() => getValues('city')}
         errors={errors}
       />
-      <RadioGroup
-        {...register('gender')}
-        label='Gender'
-        orientation='horizontal'
-        isInvalid={!!errors.gender}
-        errorMessage={errors.gender?.message}>
-        <Radio value='MALE' classNames={radioClassNames}>
-          Male
-        </Radio>
-        <Radio value='FEMALE' classNames={radioClassNames}>
-          Female
-        </Radio>
-      </RadioGroup>
-      <RadioGroup
-        {...register('genderPreference')}
-        label='Gender Preference'
-        orientation='horizontal'
-        isInvalid={!!errors.gender}
-        errorMessage={errors.gender?.message}>
-        <Radio value='MALE' classNames={radioClassNames}>
-          Male
-        </Radio>
-        <Radio value='FEMALE' classNames={radioClassNames}>
-          Female
-        </Radio>
-      </RadioGroup>
+      <Controller
+        name='gender'
+        control={control}
+        render={({ field: { value, onChange } }) => (
+          <RadioGroup
+            label='Gender'
+            orientation='horizontal'
+            value={value}
+            onChange={onChange}
+            isInvalid={!!errors.gender}
+            errorMessage={errors.gender?.message}>
+            <Radio value='MALE' classNames={radioClassNames}>
+              Male
+            </Radio>
+            <Radio value='FEMALE' classNames={radioClassNames}>
+              Female
+            </Radio>
+          </RadioGroup>
+        )}
+      />
+      <Controller
+        name='genderPreference'
+        control={control}
+        render={({ field: { value, onChange } }) => (
+          <RadioGroup
+            label='Gender Preference'
+            orientation='horizontal'
+            value={value}
+            onChange={onChange}
+            isInvalid={!!errors.genderPreference}
+            errorMessage={errors.genderPreference?.message}>
+            <Radio value='MALE' classNames={radioClassNames}>
+              Male
+            </Radio>
+            <Radio value='FEMALE' classNames={radioClassNames}>
+              Female
+            </Radio>
+          </RadioGroup>
+        )}
+      />
       <MyButton fullWidth type='submit'>
         Submit
       </MyButton>
